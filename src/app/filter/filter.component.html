@@ -1,0 +1,33 @@
+<div class="row pt-1 pb-2 mb-2">
+  <div class="col form-inline">
+    <div class="form-group row">
+      <div class="col-sm-6"></div>
+    </div>
+  </div>
+
+  <div class="col form-inline">
+    <div class="form-group row">
+      <div class="col-sm-6"></div>
+    </div>
+  </div>
+
+  <div class="col form-inline">
+    <div class="form-group row text-right">
+      <label for="wojewodztwo" class="col-sm-4 col-form-label text-end fs-6"
+        >Region:</label
+      >
+      <div class="col-sm-8">
+        <select class="form-control" (change)="filterChange($event)">
+          > >
+          <option value="0">Wszystkie</option>
+          <option value="1">Małopolskie</option>
+          <option value="2">Śląskie</option>
+          <option value="3">Podkarpackie</option>
+          <option value="4">Świętokrzyskie</option>
+          <option value="5">Lubelskie</option>
+          <option value="6">Dolnośląskie</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

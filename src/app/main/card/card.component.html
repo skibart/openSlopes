@@ -1,0 +1,27 @@
+<div class="card shadow-sm bg-white rounded border-0 mb-4">
+  <img
+    class="card-img-top h-50 d-inline-block"
+    src="../../assets/{{ dataResort.img }}"
+  />
+  <div class="card-body">
+    <figure class="text-center">
+      <blockquote class="blockquote strong-font">
+        <p>{{ dataResort.name }}</p>
+      </blockquote>
+    </figure>
+    <hr class="my-2 p-1" />
+    <p class="card-text m-0 p-0">
+      Slopes:
+      <span class="larger-font">{{ openSlopes }}/{{ allSlopes }}</span>
+    </p>
+    <p class="card-text m-0 p-0">
+      Length:
+      <span class="larger-font"
+        >{{ openSlopesLengthKm }}/{{ slopeLengthKm }} km</span
+      >
+    </p>
+  </div>
+  <div class="card-footer">
+    <small class="text-muted">Last updated {{ updateDateTransform }}</small>
+  </div>
+</div>
