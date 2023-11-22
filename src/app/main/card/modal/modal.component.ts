@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { TemplateRef } from '@angular/core';
+
 import { ResortItem } from '../../../../models/resort';
 import { ChartOpenslopesComponent } from '../chart-openslopes/chart-openslopes.component';
-import { changeDateToDayMonth } from '../../../utils/dateToDayMonth';
+import { changeDateToDayMonth } from '../../../utils/dateFunction';
 
 @Component({
   selector: 'app-modal',
@@ -33,22 +35,28 @@ export class ModalComponent {
   dateSlops: string[] = [];
   fetchComplete: boolean = false;
 
-  open(content: unknown) {
+  open(content: TemplateRef<any>) {
     if (!this.fetchComplete) {
-      this.fetchData(this.resortID!.resortId).subscribe(
-        (data: ResortItem[]) => {
-          data.forEach((item) => {
-            const dayMonth = changeDateToDayMonth(item.dateEpoch);
-            this.dateSlops.push(dayMonth);
-            this.openSlops.push(item.openSlopesQuantity);
-          });
-          this.modalService.open(content);
-        },
-        (error) => {
-          console.error('Error:', error);
-        }
-      );
-      this.fetchComplete = true;
+      if (this.resortID && this.resortID.resortId) {
+        this.fetchData(this.resortID.resortId).subscribe(
+          (data: ResortItem[]) => {
+            data.forEach((item) => {
+              const dayMonth = changeDateToDayMonth(item.dateEpoch);
+              this.dateSlops.push(dayMonth);
+              this.openSlops.push(item.openSlopesQuantity);
+            });
+            this.modalService.open(content);
+          },
+          (error) => {
+            console.error('Error:', error);
+          },
+          () => {
+            this.fetchComplete = true;
+          }
+        );
+      } else {
+        console.error('Resort ID is undefined or null.');
+      }
     } else {
       this.modalService.open(content);
     }

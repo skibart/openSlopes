@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from './card/card.component';
+import { ResortItem } from '../../models/resort';
 
 @Component({
   selector: 'app-main',
@@ -10,5 +11,5 @@ import { CardComponent } from './card/card.component';
   styleUrl: './main.component.scss',
 })
 export class MainComponent {
-  @Input() resorts: any;
+  @Input() resorts: ResortItem[] | null = null;
 }

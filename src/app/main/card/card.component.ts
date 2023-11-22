@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Slope, ResortItem } from '../../../models/resort';
 import { ModalComponent } from './modal/modal.component';
 
+import { formatEpochDate } from '../../utils/dateFunction';
+
 @Component({
   selector: 'app-card',
   standalone: true,
@@ -20,7 +22,7 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
     if (this.dataResort.dateEpoch) {
-      this.updatetime = this.formatEpochDate(this.dataResort.dateEpoch);
+      this.updatetime = formatEpochDate(this.dataResort.dateEpoch);
     }
     if (this.dataResort.openSlopes.length > 0) {
       this.slopesLength = this.calculateSlopesLength(
@@ -55,17 +57,6 @@ export class CardComponent implements OnInit {
       slopesLength += item.length;
     });
     return slopesLength;
-  }
-
-  formatEpochDate(epoch: number): string {
-    const dateObj = new Date(epoch);
-    const month = dateObj.getMonth() + 1;
-    const day = dateObj.getDate();
-    const year = dateObj.getFullYear();
-    const hours = dateObj.getHours();
-    const minutes = ('0' + dateObj.getMinutes()).slice(-2);
-    const formattedDate = `${month}/${day}/${year} ${hours}:${minutes}`;
-    return formattedDate;
   }
 
   get updateDateTransform(): string {

@@ -11,15 +11,7 @@ import { DataService } from './data-json.service';
 import { ResortItem } from '../models/resort';
 import { FilterComponent } from './filter/filter.component';
 
-const filters = [
-  (item: ResortItem) => item.region,
-  (item: ResortItem) => item.region === 'malopolskie',
-  (item: ResortItem) => item.region === 'slaskie',
-  (item: ResortItem) => item.region === 'podkarpackie',
-  (item: ResortItem) => item.region === 'swietokrzyskie',
-  (item: ResortItem) => item.region === 'lubelskie',
-  (item: ResortItem) => item.region === 'dolnoslaskie',
-];
+import { filters } from './utils/filters';
 
 @Component({
   selector: 'app-root',
@@ -58,7 +50,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.dataService.getData().subscribe((data) => {
       this.items = data;
-      console.log(this.items);
     });
   }
 }
