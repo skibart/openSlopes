@@ -2,6 +2,7 @@
   <img
     class="card-img-top h-50 d-inline-block"
     src="../../assets/{{ dataResort.img }}"
+    alt="ski resort graphic"
   />
   <div class="card-body">
     <figure class="text-center">
@@ -20,6 +21,7 @@
         >{{ openSlopesLengthKm }}/{{ slopeLengthKm }} km</span
       >
     </p>
+    <app-modal [resortID]="dataResort"></app-modal>
   </div>
   <div class="card-footer">
     <small class="text-muted">Last updated {{ updateDateTransform }}</small>

@@ -1,15 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Slope, ResortItem } from '../../../models/resort';
+import { ModalComponent } from './modal/modal.component';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ModalComponent],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
 })
 export class CardComponent implements OnInit {
-  @Input() dataResort: any;
+  @Input() dataResort!: ResortItem;
   updatetime: string = '';
   slopesLength: number = 0;
   openSlopesLength: number = 0;
@@ -34,21 +36,21 @@ export class CardComponent implements OnInit {
     }
   }
 
-  calculateSlopesQuantity(arraySlope: any[]) {
-    let openSlopes = arraySlope.filter((item) => item.status === 'open');
+  calculateSlopesQuantity(arraySlope: Slope[]) {
+    const openSlopes = arraySlope.filter((item) => item.status === 'open');
     return openSlopes.length;
   }
 
-  calculateSlopesLength(arraySlope: any[]) {
+  calculateSlopesLength(arraySlope: Slope[]) {
     let slopesLength: number = 0;
-    let newArr = arraySlope.map((item) => {
+    arraySlope.map((item) => {
       slopesLength += item.length;
     });
     return slopesLength;
   }
-  calculateOpenSlopesLength(arraySlope: any[]) {
+  calculateOpenSlopesLength(arraySlope: Slope[]) {
     let slopesLength: number = 0;
-    let openSlopes = arraySlope.filter((item) => item.status === 'open');
+    const openSlopes = arraySlope.filter((item) => item.status === 'open');
     openSlopes.forEach((item) => {
       slopesLength += item.length;
     });
@@ -56,13 +58,13 @@ export class CardComponent implements OnInit {
   }
 
   formatEpochDate(epoch: number): string {
-    let dateObj = new Date(epoch);
-    let month = dateObj.getMonth() + 1;
-    let day = dateObj.getDate();
-    let year = dateObj.getFullYear();
-    let hours = dateObj.getHours();
-    let minutes = ('0' + dateObj.getMinutes()).slice(-2);
-    let formattedDate = `${month}/${day}/${year} ${hours}:${minutes}`;
+    const dateObj = new Date(epoch);
+    const month = dateObj.getMonth() + 1;
+    const day = dateObj.getDate();
+    const year = dateObj.getFullYear();
+    const hours = dateObj.getHours();
+    const minutes = ('0' + dateObj.getMinutes()).slice(-2);
+    const formattedDate = `${month}/${day}/${year} ${hours}:${minutes}`;
     return formattedDate;
   }
 

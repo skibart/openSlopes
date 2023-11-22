@@ -1,0 +1,45 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ resortID?.name }}</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="d('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <table
+      class="table table-bordered table-hover table-striped text-center my-custom-table"
+    >
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Length</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of resortID?.openSlopes">
+          <td>{{ item.name }}</td>
+          <td>{{ item.length }}</td>
+          <td>{{ item.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <app-chart-openslopes
+      [openSlops]="openSlops"
+      [dateSlops]="dateSlops"
+    ></app-chart-openslopes>
+  </div>
+  <div class="modal-footer">
+    <p>Last update: {{ resortID?.dateLocal }}</p>
+  </div>
+</ng-template>
+
+<div class="d-flex justify-content-end p-3">
+  <button class="btn btn-secondary btn-sm btn-block" (click)="open(content)">
+    more info...
+  </button>
+</div>

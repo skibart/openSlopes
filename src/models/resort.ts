@@ -4,9 +4,11 @@ export class ResortItem {
     public region: string,
     public resortId: string,
     public openSlopes: Slope[],
-    public image: string,
+    public img: string,
     public dateEpoch: number,
-    public dateLocal: string
+    public dateLocal: Date,
+    public openSlopesQuantity: number,
+    public slopeQuantity: number
   ) {}
 }
 

@@ -8,7 +8,7 @@ import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './data-json.service';
-import { ResortItem, Slope } from '../models/resort';
+import { ResortItem } from '../models/resort';
 import { FilterComponent } from './filter/filter.component';
 
 const filters = [
