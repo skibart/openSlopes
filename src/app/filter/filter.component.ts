@@ -1,5 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,7 +11,8 @@ import { CommonModule } from '@angular/common';
 export class FilterComponent {
   @Output() changeFilter = new EventEmitter<number>();
 
-  filterChange(value: any) {
-    this.changeFilter.emit(value.target.value);
+  filterChange(event: Event) {
+    const selectElement = event.target as HTMLSelectElement;
+    this.changeFilter.emit(Number(selectElement.value));
   }
 }

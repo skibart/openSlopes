@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -31,25 +31,17 @@ import { filters } from './utils/filters';
 })
 export class AppComponent implements OnInit {
   constructor(private dataService: DataService) {}
-
   items: ResortItem[] = [];
-  private _currentFilter: number = 0;
+  itemFiltered: ResortItem[] = [];
 
-  @Input()
-  set currentFilter(value: number) {
-    this._currentFilter = value;
-  }
-
-  get currentFilter(): number {
-    return this._currentFilter;
-  }
-
-  get visibleItems(): ResortItem[] {
-    return this.items.filter(filters[this.currentFilter]);
-  }
   ngOnInit() {
     this.dataService.getData().subscribe((data) => {
       this.items = data;
+      this.itemFiltered = data;
     });
+  }
+
+  actionChange(count: number) {
+    this.itemFiltered = this.items.filter(filters[count]);
   }
 }
