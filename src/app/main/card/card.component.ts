@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Slope, ResortItem } from '../../../models/resort';
 import { ModalComponent } from './modal/modal.component';
@@ -13,12 +13,16 @@ import { formatEpochDate } from '../../utils/dateFunction';
   styleUrl: './card.component.scss',
 })
 export class CardComponent implements OnInit {
+  @Input() shadowBg: boolean = false;
+  @Input() opacityOn: boolean = false;
   @Input() dataResort!: ResortItem;
   updatetime: string = '';
   slopesLength: number = 0;
   openSlopesLength: number = 0;
   openSlopes: number = 0;
   allSlopes: number = 0;
+
+  @ViewChild(ModalComponent) modalComponent!: ModalComponent;
 
   ngOnInit() {
     if (this.dataResort.dateEpoch) {
@@ -69,5 +73,11 @@ export class CardComponent implements OnInit {
 
   get openSlopesLengthKm(): number {
     return Number((this.openSlopesLength / 1000).toFixed(1));
+  }
+
+  openModal() {
+    if (this.modalComponent) {
+      this.modalComponent.openModal();
+    }
   }
 }

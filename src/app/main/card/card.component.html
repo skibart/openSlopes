@@ -1,13 +1,22 @@
-<div class="card shadow-sm bg-white rounded border-0 mb-4">
-  <img
-    class="card-img-top h-50 d-inline-block"
-    src="../../assets/{{ dataResort.img }}"
-    alt="ski resort graphic"
-  />
+<div
+  class="card shadow-sm bg-white rounded-4 border-0 mb-4"
+  [class.shadow-lg]="shadowBg"
+  [class.opacity-25]="opacityOn"
+>
+  <div class="my-card-style rounded-bottom-0 rounded-top-4">
+    <a href="javascript:void(0)" (click)="openModal()">
+      <img
+        class="card-img-top d-inline-block"
+        src="../../assets/{{ dataResort.img }}"
+        alt="ski resort graphic"
+    /></a>
+  </div>
   <div class="card-body">
     <figure class="text-center">
       <blockquote class="blockquote strong-font">
-        <p>{{ dataResort.name }}</p>
+        <a class="navbar-brand" href="javascript:void(0)" (click)="openModal()">
+          <h4>{{ dataResort.name }}</h4>
+        </a>
       </blockquote>
     </figure>
     <hr class="my-2 p-1" />
@@ -20,6 +29,10 @@
       <span class="larger-font"
         >{{ openSlopesLengthKm }}/{{ slopeLengthKm }} km</span
       >
+    </p>
+    <p class="card-text m-0 p-0">
+      Lifts:
+      <span class="larger-font">--</span>
     </p>
     <app-modal [resortID]="dataResort"></app-modal>
   </div>

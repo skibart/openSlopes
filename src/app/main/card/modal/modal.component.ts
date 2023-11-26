@@ -1,9 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild, TemplateRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TemplateRef } from '@angular/core';
 
 import { ResortItem } from '../../../../models/resort';
 import { ChartOpenslopesComponent } from '../chart-openslopes/chart-openslopes.component';
@@ -26,14 +25,20 @@ export class ModalComponent {
     config.backdrop = true;
     config.keyboard = true;
     config.animation = true;
+    config.scrollable = true;
     config.size = 'xl';
     config.backdrop;
   }
 
   @Input() resortID: ResortItem | null = null;
+  @ViewChild('content', { static: true }) content!: TemplateRef<any>;
   openSlops: number[] = [];
   dateSlops: string[] = [];
   fetchComplete: boolean = false;
+
+  openModal() {
+    this.open(this.content);
+  }
 
   open(content: TemplateRef<any>) {
     if (!this.fetchComplete) {
@@ -44,6 +49,7 @@ export class ModalComponent {
               const dayMonth = changeDateToDayMonth(item.dateEpoch);
               this.dateSlops.push(dayMonth);
               this.openSlops.push(item.openSlopesQuantity);
+              console.log(item);
             });
             this.modalService.open(content);
           },

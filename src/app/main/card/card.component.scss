@@ -6,3 +6,19 @@
 .strong-font {
     font-weight: bold;
 }
+
+.card-img-top {
+    transition: transform 0.5s ease;
+    /* Smooth transition for zoom effect */
+    display: block;
+    /* Optional: Ensures the image takes up the full width of its container */
+}
+
+.card-img-top:hover {
+    transform: scale(1.1);
+    /* Adjust scale value for desired zoom level */
+}
+
+.my-card-style {
+  overflow: hidden; /* or 'visible' depending on desired effect */
+}

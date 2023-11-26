@@ -12,4 +12,15 @@ import { ResortItem } from '../../models/resort';
 })
 export class MainComponent {
   @Input() resorts: ResortItem[] | null = null;
+  hoveredIndex: number | null = null;
+  opacityBoolean: boolean = false;
+
+  onMouseOver(index: number): void {
+    this.hoveredIndex = index;
+    this.opacityBoolean = true;
+  }
+  onMouseOut(): void {
+    this.hoveredIndex = null;
+    this.opacityBoolean = false;
+  }
 }
