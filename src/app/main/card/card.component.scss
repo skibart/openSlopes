@@ -22,3 +22,8 @@
 .my-card-style {
   overflow: hidden; /* or 'visible' depending on desired effect */
 }
+
+.card {
+    transition: opacity 0.5s ease;
+}
+
