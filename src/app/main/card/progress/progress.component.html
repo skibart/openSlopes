@@ -1,0 +1,15 @@
+<div class="progresbar">
+  <p class="card-text m-0 p-0 text-center">
+    <span class="larger-font">
+      <span class="text-danger"> {{ value }}</span>
+      /{{ max }} </span
+    ><span class="text-progresbar-info">{{ descProgres }}</span>
+  </p>
+
+  <ngb-progressbar
+    class="mb-3 progress-slope rounded-0"
+    type="danger"
+    [value]="value"
+    [max]="max"
+  />
+</div>

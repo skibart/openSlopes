@@ -4,11 +4,12 @@ import { Slope, ResortItem } from '../../../models/resort';
 import { ModalComponent } from './modal/modal.component';
 
 import { formatEpochDate } from '../../utils/dateFunction';
+import { ProgressComponent } from './progress/progress.component';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CommonModule, ModalComponent],
+  imports: [CommonModule, ModalComponent, ProgressComponent],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
 })

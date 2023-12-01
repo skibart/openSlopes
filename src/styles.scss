@@ -2,3 +2,23 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+
+body,
+button,
+input,
+select,
+textarea {
+    font-family: 'Roboto', sans-serif;
+}
+
+.text-danger {
+    color: #FF6600!important;
+}
+.danger {
+    color: #FF6600!important;
+}
+.text-bg-danger {
+        color: #FF6600 !important;
+        background-color: #FF6600 !important;
+    }
