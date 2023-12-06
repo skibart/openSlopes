@@ -8,4 +8,6 @@ export const filters = [
   (item: ResortItem) => item.region === 'swietokrzyskie',
   (item: ResortItem) => item.region === 'lubelskie',
   (item: ResortItem) => item.region === 'dolnoslaskie',
+  (item: ResortItem) => item.region === 'czechy',
+  (item: ResortItem) => item.region === 'slowacja',
 ];
